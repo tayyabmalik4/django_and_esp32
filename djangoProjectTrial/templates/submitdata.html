@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit data Form</title>
+</head>
+<body>
+    <div class="main_container">
+        <form method="post" action="/">
+            {% csrf_token %}
+        <h1 class="main_heading">Welcome to the Django World</h1>
+        <div>
+            <input type="text" name="name" id="name" placeholder="Please Enter Your Name">
+        </div>
+        <div>
+            <input type="text" name="lastname" id="lastname" placeholder="Enter Your Last Name">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data</title>
+</head>
+<style>
+    table, th, td{
+            border: 1px solid black;
+        border-collapse: collapse;
+        width: 20%;
+        text-align: center;
+    }
+</style>
+<script>
+    setTimeout(function(){
+   window.location.reload(1);
+}, 5000);
+</script>
+<body>
+    <h1>Fetching the Data from DataBase</h1>
+    <table>
+        <tr>
+            <th>Temperature</th>
+            <th>Humidity</th>
+            <th>Date&Time</th>
+        </tr>
+        {% comment %} {% for i in task %} {% endcomment %}
+        <tr>
+            <td>{{task.temperature}}</td>
+            <td>{{task.humidity}}</td>
+            <td>{{task.date}}</td>
+        </tr>
+        {% comment %} {% endfor %} {% endcomment %}
+    </table>
+</body>
+</html>

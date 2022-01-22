@@ -17,7 +17,8 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('temperature', models.CharField(max_length=122)),
                 ('humidity', models.CharField(max_length=122)),
-                ('date',models.DateTimeField()),
+                ('time',models.TimeField()),
+                ('date',models.DateField()),
             ],
         ),
     ]

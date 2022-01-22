@@ -1,0 +1,31 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.main_heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+}
+.main_div{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.temp_div{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    background-color: rgb(235, 231, 227);
+    margin-bottom: 30px;
+}
+.humid_div{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    background-color: rgb(247, 193, 140);
+}

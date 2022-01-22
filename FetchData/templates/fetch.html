@@ -1,39 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch Data</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch Data</title>
+  <!-- this is the fontAwesome javascript link -->
+  <script src="https://kit.fontawesome.com/3f26a17699.js" crossorigin="anonymous"></script>
+  <!-- this is the canvasjas javascript -->
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.stock.min.js"></script>
+  <!-- this is the chartjs javascript -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <style>
-    table, th, td{
-            border: 1px solid black;
-        border-collapse: collapse;
-        width: 20%;
-        text-align: center;
-    }
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 20%;
+    text-align: center;
+  }
+
+  .main_heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+  }
+
+  .main_div {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+  .temp_div {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    background-color: rgb(235, 231, 227);
+    margin-bottom: 30px;
+  }
+
+  .humid_div {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    background-color: rgb(247, 193, 140);
+  }
+
+  .temp_div i {
+    color: red;
+    margin-right: 5px;
+  }
+
+  .humid_div i {
+    color: rgb(226, 194, 14);
+    margin-right: 5px;
+  }
+
+  .humid_div h5 {
+    margin-right: 70px;
+  }
+  .humid_div .temptime_div{
+    display: flex;
+    flex-direction: column;
+  }
+  .temptime_div p{
+    font-size: 13px;
+  }
 </style>
 <script>
-    setTimeout(function(){
-   window.location.reload(1);
-}, 5000);
+  setTimeout(function () {
+    window.location.reload(1);
+  }, 60000); 
 </script>
+
+
+
 <body>
-    <h1>Fetching the Data from DataBase</h1>
-    <table>
-        <tr>
-            <th>Temperature</th>
-            <th>Humidity</th>
-            <th>Date&Time</th>
-        </tr>
-        {% comment %} {% for i in task %} {% endcomment %}
-        <tr>
-            <td>{{task.temperature}}</td>
-            <td>{{task.humidity}}</td>
-            <td>{{task.date}}</td>
-        </tr>
-        {% comment %} {% endfor %} {% endcomment %}
-    </table>
+  <h1 class="main_heading">Temperature And Humidity Sense At Hunch Automation</h1>
+
+  <div class="main_div">
+    <div class="temp_div">
+      <div class="temptime_div">
+      <h5><i class="fas fa-temperature-low"></i>Temperature {{task.temperature}}<sup>o</sup>C</h5>
+      <h5><i class="fa fa-tint" aria-hidden="true"></i>Humidity {{task.humidity}}%</h5>
+    <p>Last Update <br>{{task.date|date:"d-m-Y"}} {{task.time}}</p>
+    </div>
+      <div>
+        <canvas id="canvas-temp" width="900px" height="200px"></canvas>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="humid_div">
+    <div class="humidtime_div">
+    <h5><i class="fa fa-tint" aria-hidden="true"></i>Humidity {{task.humidity}}%</h5>
+    <p>Last Update {{task.date|date:"d-m-Y"}} {{task.time}}</p>
+  </div>
+    <div>
+      <canvas id="canvas-humid" width="900px" height="150px"></canvas>
+    </div>
+  </div> -->
+  <!-- this is the chartjs javascript -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+  <!-- this script is for temperture -->
+ <script> 
+    let a = JSON.parse('{{temperature|safe}}')
+    let b = JSON.parse('{{humidity|safe}}')
+    
+    let time1 = "{{time1}}"
+    let time2 = "{{time2}}"
+    let time3 = "{{time3}}"
+    let time4 = "{{time4}}"
+    let time5 = "{{time5}}"
+    let time6 = "{{time6}}"
+    let time7 = "{{time7}}"
+    let time8 = "{{time8}}"
+    let time9 = "{{time9}}"
+    let time10 = "{{time10}}"
+    let time11 = "{{time11}}"
+    let time12 = "{{time12}}"
+    let time13 = "{{time13}}"
+    let time14 = "{{time14}}"
+    let time15 = "{{time15}}"
+    let time16 = "{{time16}}"
+    let time17 = "{{time17}}"
+    let time18 = "{{time18}}"
+    let time19 = "{{time19}}"
+    let time20 = "{{time20}}"
+    let time21 = "{{time21}}"
+    let time22 = "{{time22}}"
+    let time23 = "{{time23}}"
+    let time24 = "{{time24}}"
+
+
+    const labels = [
+      time1,
+      time2,
+      time3,
+      time4,
+      time5,
+      time6,
+      time7,
+      time8,
+      time9,
+      time10,
+      time11,
+      time12,
+      time13,
+      time14,
+      time15,
+      time16,
+      time17,
+      time18,
+      time19,
+      time20,
+      time21,
+      time22,
+      time23,
+      time24,
+    ];
+  
+  
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+        label: 'Temperature',
+        backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+        borderColor: 'rgb(255, 99, 132)',
+        // data: [17.90,17.90,18.90,18.90,17.90,18.90],
+        data:a
+      },
+      {
+        label: 'Humidity',
+        backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+        borderColor: 'green',
+        // data: [17.90,17.90,18.90,18.90,17.90,18.90],
+        data:b
+      }
+    ]
+    };
+  
+    const config = {
+      type: 'line',
+      data: data,
+      options: {
+        scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+    };
+  
+    const myChart = new Chart(
+      document.getElementById('canvas-temp'),
+      config
+    );
+  </script>
+
+  <!-- this script is for Humidity graph -->
+  <!-- <script>
+    let b = JSON.parse('{{humidity|safe}}')
+    
+    let xtime1 = "{{time1}}"
+    let xtime2 = "{{time2}}"
+    let xtime3 = "{{time3}}"
+    let xtime4 = "{{time4}}"
+    let xtime5 = "{{time5}}"
+    let xtime6 = "{{time6}}"
+
+
+    const xlabels = [
+      xtime1,
+      xtime2,
+      xtime3,
+      xtime4,
+      xtime5,
+      xtime6,
+    ];
+  
+  
+    const xdata = {
+      labels: xlabels,
+      datasets: [{
+        label: 'Humidity',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        // data: [17.90,17.90,18.90,18.90,17.90,18.90],
+        data:b
+      }]
+    };
+  
+    const xconfig = {
+      type: 'line',
+      data: xdata,
+      options: {
+        scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+    };
+  
+    const xmyChart = new Chart(
+      document.getElementById('canvas-humid'),
+      xconfig
+    );
+  </script> -->
 </body>
+
 </html>
